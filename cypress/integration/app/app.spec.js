@@ -94,5 +94,43 @@ describe('Главное приложение', () => {
             cy.get('#res')
                 .should('have.text', 'Нет элементов, удовлетворяющих условию(')
         })
+
+        it('Некорректный ввод значений. Меньше 10 чисел', () => {
+            cy.reload()
+            cy.focused()
+                .type('1234 1234')
+            cy.get('#btnConclude')
+                .click()
+            cy.get('#pParseError')
+                .should('have.text', 'Нужно ввести 10 чисел!')
+        })
+
+        it('Некорректный ввод значений. Введено не четырехзначное число', () => {
+            cy.reload()
+            cy.focused()
+                .type('12343242314 1234 3')
+            cy.get('#btnConclude')
+                .click()
+            cy.get('#pParseError')
+                .should('have.text', 'Значения заполнены некорректно')
+        })
+        
+        it('Некорректный ввод значений. Введен символ, не являющийся цифрой', () => {
+            cy.reload()
+            cy.focused()
+                .type('1234 ewqr 1324 f')
+            cy.get('#btnConclude')
+                .click()
+            cy.get('#pParseError')
+                .should('have.text', 'Значения заполнены некорректно')
+        })
+
+        it('Некорректный ввод значений. Поле оставлено пустым', () => {
+            cy.reload()
+            cy.get('#btnConclude')
+                .click()
+            cy.get('#pParseError')
+                .should('have.text', 'Нужно ввести 10 чисел!')
+        })
     })
 });
