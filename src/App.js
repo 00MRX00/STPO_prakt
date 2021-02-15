@@ -17,25 +17,42 @@ const App = () => {
 	}
 
 	const onConcludeHandler = () => {
-		const nums = appContr.parseNumbers(input);
-		setIsConclude(true);
+		// const nums = appContr.parseNumbers(input);
+		// setIsConclude(true);
 
-		if (nums.join(' ') !== input.trim()) {
-			setParseError('Значения заполнены некорректно');
-		} else {
-			if (nums.length !== 10) {
-				setParseError('Нужно ввести 10 чисел!');
-				return
-			}
-			setParseError('');
-			const result = appContr.calculateResult(nums, character);
-			if (result.length) {
-				setResult(result);
-				setResultError('');
-			} else {
-				setResultError('Нет элементов, удовлетворяющих условию(');
-			}
+		// if (nums.join(' ') !== input.trim()) {
+		// 	setParseError('Значения заполнены некорректно');
+		// } else {
+		// 	if (nums.length !== 10) {
+		// 		setParseError('Нужно ввести 10 чисел!');
+		// 		return
+		// 	}
+		// 	setParseError('');
+		// 	const result = appContr.calculateResult(nums, character);
+		// 	if (result.length) {
+		// 		setResult(result);
+		// 		setResultError('');
+		// 	} else {
+		// 		setResultError('Нет элементов, удовлетворяющих условию(');
+		// 	}
+		// }
+		setIsConclude(true);
+		const [result, parseErr, resultErr] = appContr.conclude(input, character);
+		setParseError(parseErr);
+		if (parseErr) {
+			setResult([]);
+			setResultError('');
+			return
 		}
+		setResultError(resultErr);
+		if (resultErr) {
+			setResult([]);
+			setParseError('');
+			return
+		}
+		setResult(result);
+		setParseError('');
+		setResultError('');
 	}
 
 	const handleOptionChange = (event) => {

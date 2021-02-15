@@ -32,4 +32,22 @@ export class Prakt {
     calculateResult(nums, character) {
         return nums.filter(num => this.isSimp(num) && this.firstDigitCheck(num, character))
     }
+
+    conclude(input, character) {
+        const nums = this.parseNumbers(input);
+
+        if (nums.join(' ') !== input.trim()) {
+            return [[], 'Значения заполнены некорректно', ''];
+        } else {
+            if (nums.length !== 10) {
+                return [[], 'Нужно ввести 10 чисел!', ''];
+            }
+            const result = this.calculateResult(nums, character);
+            if (result.length) {
+                return [result, '', ''];
+            } else {
+                return [[], '', 'Нет элементов, удовлетворяющих условию('];
+            }
+        }
+    }
 }
