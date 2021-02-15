@@ -14,6 +14,7 @@ const App = () => {
 
 	const onChangeInputHandler = (value) => {
 		setInput(value);
+		setIsConclude(false);
 	}
 
 	const onConcludeHandler = () => {
@@ -38,6 +39,7 @@ const App = () => {
 
 	const handleOptionChange = (event) => {
 		setCharacter(+event.target.value);
+		setIsConclude(false);
 	}
 
 	return (
