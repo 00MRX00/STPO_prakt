@@ -17,25 +17,6 @@ const App = () => {
 	}
 
 	const onConcludeHandler = () => {
-		// const nums = appContr.parseNumbers(input);
-		// setIsConclude(true);
-
-		// if (nums.join(' ') !== input.trim()) {
-		// 	setParseError('Значения заполнены некорректно');
-		// } else {
-		// 	if (nums.length !== 10) {
-		// 		setParseError('Нужно ввести 10 чисел!');
-		// 		return
-		// 	}
-		// 	setParseError('');
-		// 	const result = appContr.calculateResult(nums, character);
-		// 	if (result.length) {
-		// 		setResult(result);
-		// 		setResultError('');
-		// 	} else {
-		// 		setResultError('Нет элементов, удовлетворяющих условию(');
-		// 	}
-		// }
 		setIsConclude(true);
 		const [result, parseErr, resultErr] = appContr.conclude(input, character);
 		setParseError(parseErr);
