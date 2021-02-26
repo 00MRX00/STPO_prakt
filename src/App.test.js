@@ -33,7 +33,7 @@ describe('App test', () => {
     test('CalculateResult function', () => {
         expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234], appContr.Character.MORE)).toStrictEqual([]);
         expect(appContr.calculateResult([1234, 1234, 1234, 3671, 1234, 1234, 1234, 1234, 1234, 5231], appContr.Character.MORE)).toStrictEqual([3671, 5231]);
-        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 4231, 1231], appContr.Character.MORE)).toStrictEqual([]);
+        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 4232, 1231], appContr.Character.MORE)).toStrictEqual([]);
 
         expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234], appContr.Character.LESS)).toStrictEqual([]);
         expect(appContr.calculateResult([1234, 1234, 1234, 2273, 1234, 1234, 1234, 1234, 1234, 2237], appContr.Character.LESS)).toStrictEqual([2273, 2237]);
