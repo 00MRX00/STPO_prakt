@@ -21,16 +21,6 @@ describe('App test', () => {
         expect(appContr.firstDigitCheck(1657, appContr.Character.LESS)).toStrictEqual(true);
     });
 
-    test('CalculateResult function', () => {
-        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234], appContr.Character.MORE)).toStrictEqual([]);
-        expect(appContr.calculateResult([1234, 1234, 1234, 3671, 1234, 1234, 1234, 1234, 1234, 5231], appContr.Character.MORE)).toStrictEqual([3671, 5231]);
-        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1231], appContr.Character.MORE)).toStrictEqual([]);
-
-        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234], appContr.Character.LESS)).toStrictEqual([]);
-        expect(appContr.calculateResult([1234, 1234, 1234, 2273, 1234, 1234, 1234, 1234, 1234, 2237], appContr.Character.LESS)).toStrictEqual([2273, 2237]);
-        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 2232], appContr.Character.LESS)).toStrictEqual([]);
-    });
-
     test('ParseNumbers function', () => {
         expect(appContr.parseNumbers('1234 1234 1234 1234 1234 1234 1234 1234 1234 1234')).toStrictEqual([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234]);
         expect(appContr.parseNumbers('1234 12 1 0')).toStrictEqual([1234]);
@@ -41,6 +31,16 @@ describe('App test', () => {
     });
 
     test('CalculateResult function', () => {
+        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234], appContr.Character.MORE)).toStrictEqual([]);
+        expect(appContr.calculateResult([1234, 1234, 1234, 3671, 1234, 1234, 1234, 1234, 1234, 5231], appContr.Character.MORE)).toStrictEqual([3671, 5231]);
+        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 4231, 1231], appContr.Character.MORE)).toStrictEqual([]);
+
+        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234], appContr.Character.LESS)).toStrictEqual([]);
+        expect(appContr.calculateResult([1234, 1234, 1234, 2273, 1234, 1234, 1234, 1234, 1234, 2237], appContr.Character.LESS)).toStrictEqual([2273, 2237]);
+        expect(appContr.calculateResult([1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 1234, 2232], appContr.Character.LESS)).toStrictEqual([]);
+    });
+
+    test('Conclude function', () => {
         expect(appContr.conclude('1234 1234 1234 1234 1234 1234 1234 1234 1234 1234', appContr.Character.MORE)).toStrictEqual([[], '', 'Нет элементов, удовлетворяющих условию(']);
         expect(appContr.conclude('1234 1234 1234 3671 1234 1234 1234 1234 1234 5231', appContr.Character.MORE)).toStrictEqual([[3671, 5231], '', '']);
         expect(appContr.conclude('1234 1234 1234 1234 1234 1234 1234 1234 1234 1231', appContr.Character.MORE)).toStrictEqual([[], '', 'Нет элементов, удовлетворяющих условию(']);
